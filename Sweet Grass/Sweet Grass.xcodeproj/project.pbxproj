@@ -28,7 +28,6 @@
 		2AD412221C698BB8000A1A6E /* SidemenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD412211C698BB8000A1A6E /* SidemenuViewController.swift */; };
 		2AD412241C698E9C000A1A6E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD412231C698E9C000A1A6E /* LocationViewController.swift */; };
 		2AD412261C6A84F9000A1A6E /* accountmanagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD412251C6A84F9000A1A6E /* accountmanagementViewController.swift */; };
-		2AD4122A1C6BB6FA000A1A6E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AD412291C6BB6FA000A1A6E /* Info.plist */; };
 		2AD7D29C1BFC149700A483AA /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD7D29B1BFC149700A483AA /* Register.swift */; };
 		2AD7D3181BFE8AE300A483AA /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD7D3171BFE8AE300A483AA /* loginViewController.swift */; };
 		2AD80D491BFA7C4600B5D88C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD80D481BFA7C4600B5D88C /* AppDelegate.swift */; };
@@ -43,6 +42,8 @@
 		453695FD1CBD41C100E31735 /* HistoryOrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453695FB1CBD41C100E31735 /* HistoryOrderListViewController.swift */; };
 		4559796D1CBD390700906847 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559796C1CBD390700906847 /* Foundation.framework */; };
 		4559796F1CBD391B00906847 /* dylib1.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559796E1CBD391B00906847 /* dylib1.o */; };
+		455A09651CBDE996007521CF /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A09641CBDE996007521CF /* CouponView.swift */; };
+		455A09661CBDE996007521CF /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A09641CBDE996007521CF /* CouponView.swift */; };
 		45BA97B21CBC051B00C0B922 /* food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45BA97B11CBC051B00C0B922 /* food.jpg */; };
 		45BA97B51CBC05D300C0B922 /* CartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA97B41CBC05D300C0B922 /* CartListViewController.swift */; };
 		45BA97B61CBC05D300C0B922 /* CartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA97B41CBC05D300C0B922 /* CartListViewController.swift */; };
@@ -104,6 +105,7 @@
 		453695FB1CBD41C100E31735 /* HistoryOrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryOrderListViewController.swift; path = Order/HistoryOrderListViewController.swift; sourceTree = "<group>"; };
 		4559796C1CBD390700906847 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4559796E1CBD391B00906847 /* dylib1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.o; path = usr/lib/dylib1.o; sourceTree = SDKROOT; };
+		455A09641CBDE996007521CF /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouponView.swift; path = Cart/CouponView.swift; sourceTree = "<group>"; };
 		45BA97B11CBC051B00C0B922 /* food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food.jpg; sourceTree = "<group>"; };
 		45BA97B41CBC05D300C0B922 /* CartListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartListViewController.swift; path = Cart/CartListViewController.swift; sourceTree = "<group>"; };
 		45BA97B81CBC094800C0B922 /* CartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				45BA97BC1CBC0CB000C0B922 /* CartFootView.swift */,
+				455A09641CBDE996007521CF /* CouponView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -327,7 +330,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = HanFang;
 				TargetAttributes = {
 					2AD80D421BFA7C4600B5D88C = {
@@ -364,7 +367,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AD4122A1C6BB6FA000A1A6E /* Info.plist in Resources */,
 				45BA97B21CBC051B00C0B922 /* food.jpg in Resources */,
 				2AD80D531BFA7C4600B5D88C /* LaunchScreen.xib in Resources */,
 				2AD80D501BFA7C4600B5D88C /* Images.xcassets in Resources */,
@@ -416,6 +418,7 @@
 				2A3BFF771CAB5C68005230E5 /* ReservationViewController.swift in Sources */,
 				2AC402FD1CB5F87600F1472A /* menudish.swift in Sources */,
 				2AD4121D1C694861000A1A6E /* RatingControl.swift in Sources */,
+				455A09651CBDE996007521CF /* CouponView.swift in Sources */,
 				2AD7D29C1BFC149700A483AA /* Register.swift in Sources */,
 				45BA97B51CBC05D300C0B922 /* CartListViewController.swift in Sources */,
 				2A3BFF751CAB5674005230E5 /* changepasswordViewController.swift in Sources */,
@@ -432,6 +435,7 @@
 				45BA97B61CBC05D300C0B922 /* CartListViewController.swift in Sources */,
 				2AD80D5F1BFA7C4700B5D88C /* Sweet_GrassTests.swift in Sources */,
 				45BA97BA1CBC094800C0B922 /* CartItemCell.swift in Sources */,
+				455A09661CBDE996007521CF /* CouponView.swift in Sources */,
 				453695FD1CBD41C100E31735 /* HistoryOrderListViewController.swift in Sources */,
 				452848B81CB8C69D00CBB256 /* GlobalDefine.swift in Sources */,
 			);

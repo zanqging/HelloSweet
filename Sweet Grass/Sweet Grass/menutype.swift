@@ -81,7 +81,7 @@ class menutype: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                 
                                 let currentdish = val as! NSDictionary
                                 arrayOfdishes.append(dish(title: key as! String,
-                                    imageName: "blank",
+                                    imageName: "side item",
                                     dishinfo: currentdish["description"] as! String,
                                     dishprice: currentdish["price"] as! String,
                                     dishca: currentdish["calories"] as! String))
@@ -89,7 +89,7 @@ class menutype: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         }
                         
                         let detailedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("menudish")
-                        self.showViewController(detailedViewController!, sender: nil)
+                        self.navigationController?.pushViewController(detailedViewController!, animated: true)
                     } catch {
                         print(error)
                     }

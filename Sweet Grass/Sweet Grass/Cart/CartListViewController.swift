@@ -17,8 +17,37 @@ class CartListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        var cartFooterView =  CartFootView(frame: CGRectMake(0,self.view.frame.size.height-70,self.view.frame.size.width,80))
+        let frame = self.view.frame
+        
+        let cartFooterView =  CartFootView(frame: CGRectMake(0,frame.size.height-70,frame.size.width,80))
+        cartFooterView.pickUpButton?.addTarget(self, action: Selector("pickUpTimer:"), forControlEvents: .TouchUpInside)
+        cartFooterView.checkOutButton?.addTarget(self, action: Selector("checkOut:"), forControlEvents: .TouchUpInside)
         self.view.addSubview(cartFooterView)
+        
+        let couponView = CouponView(frame:CGRectMake(0,0,frame.size.width,100))
+        self.tableView.tableFooterView = couponView
+    }
+    
+    /**
+     pickUpTimer
+     
+     - parameter sender: button
+     */
+    func pickUpTimer(sender:AnyObject) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("pickuptime")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    /**
+     checkOut
+     
+     - parameter sender: button
+     */
+    func checkOut(sender:AnyObject) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("menutype")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

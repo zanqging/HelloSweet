@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D2411EDCAB7DDD2333C54927786EAD18076E22BD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "17A0CF936815881D5A5E7307392B8B2F39A52AD9" : 0,
+    "D2411EDCAB7DDD2333C54927786EAD18076E22BD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2F97E714-3CE2-444E-AAE6-952A75CFF3DC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "17A0CF936815881D5A5E7307392B8B2F39A52AD9" : "",
+    "D2411EDCAB7DDD2333C54927786EAD18076E22BD" : "HelloSweet\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sweet Grass",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Sweet Grass\/Sweet Grass.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.iu.edu\/ivlara\/SweetGrassRestaurant.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "17A0CF936815881D5A5E7307392B8B2F39A52AD9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zanqging\/HelloSweet.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D2411EDCAB7DDD2333C54927786EAD18076E22BD"
+    }
+  ]
+}
