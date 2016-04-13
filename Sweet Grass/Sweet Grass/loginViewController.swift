@@ -54,15 +54,12 @@ class LoginViewController: UIViewController {
         print(postString)
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)!;
         
-        
-        
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response:NSURLResponse?, error:NSError?) -> Void in
-                print(request)
-                print(data!)
-            
+//                print(request)
+//                print(data!)
                 dispatch_async(dispatch_get_main_queue())
                 {
-            
+                    
                 if(error != nil)
                 {
                     //Display an alert message
@@ -76,10 +73,11 @@ class LoginViewController: UIViewController {
                     
                     
                 do {
-                    print("about to json")
+                    let string : String = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+                    print(string)
+                    
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
                     print(json)
-                    
                     if let parseJSON = json {
                             
                         let userId = parseJSON["email"] as? String
@@ -89,6 +87,7 @@ class LoginViewController: UIViewController {
                         NSUserDefaults.standardUserDefaults().setObject(parseJSON["fname"], forKey: "fname")
                         NSUserDefaults.standardUserDefaults().setObject(parseJSON["lname"], forKey: "lname")
                         NSUserDefaults.standardUserDefaults().setObject(parseJSON["phone"], forKey: "phone")
+                        NSUserDefaults.standardUserDefaults().setObject(parseJSON["userid"], forKey: "userid")
                         NSUserDefaults.standardUserDefaults().synchronize()
                             
                             let messageName = parseJSON["fname"] as? String

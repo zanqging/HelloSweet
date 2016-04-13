@@ -46,8 +46,19 @@ class ViewController: UIViewController {
 //            signup.hidden = false
 //            signout.hidden = true
 //        }
+        
+        //接受消息
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("message"), name: "message", object: nil)
     }
     
+    
+    func message(notification:NSNotification)
+    {
+        let userInfo = notification.userInfo as! NSDictionary
+        let message = userInfo.valueForKey("message") as! String
+        let myAlert = UIAlertController(title: "Message", message: message, preferredStyle:  UIAlertControllerStyle.ActionSheet);
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
     /**
      SignIn Action
      - parameter sender: taped ButtonItem

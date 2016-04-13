@@ -20,9 +20,11 @@ class menutype: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var arrayOftypes:[type] = [type]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Menu"
 
         // Do any additional setup after loading the view.
         self.setUpType()
+        
         
     }
 
@@ -65,7 +67,7 @@ class menutype: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var _menutype = indexPath.row
         print(_menutype)
         //Send user data to server side
-        let myURL = NSURL(string:"http://cgi.soic.indiana.edu/~team17/getmenu.php");
+        let myURL = NSURL(string:"\(SERVER_URL)getmenu.php");
         let request = NSMutableURLRequest(URL:myURL!);
         
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response:NSURLResponse?, error:NSError?) -> Void in
@@ -73,23 +75,32 @@ class menutype: UIViewController, UITableViewDataSource, UITableViewDelegate {
             dispatch_async(dispatch_get_main_queue())
                 {
                     do {
-                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
-                        arrayOfdishes = [dish]()
-                        for (key,val) in json! {
-                            let shabi = (val as! NSDictionary)["type"] as! String
-                            if(shabi==types[_menutype]) {
+                        if data != nil
+                        {
+                            let string : String = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+                            print(string)
+                            
+                            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                            if json != nil{
+                                arrayOfdishes = [dish]()
+                                for (key,val) in json! {
+                                    let shabi = (val as! NSDictionary)["type"] as! String
+                                    if(shabi==types[_menutype]) {
+                                        
+                                        let currentdish = val as! NSDictionary
+                                        arrayOfdishes.append(dish(title: key as! String,
+                                            imageName: "side item",
+                                            dishinfo: currentdish["description"] as! String,
+                                            dishprice: currentdish["price"] as! String,
+                                            dishca: currentdish["calories"] as! String))
+                                    }
+                                }
                                 
-                                let currentdish = val as! NSDictionary
-                                arrayOfdishes.append(dish(title: key as! String,
-                                    imageName: "side item",
-                                    dishinfo: currentdish["description"] as! String,
-                                    dishprice: currentdish["price"] as! String,
-                                    dishca: currentdish["calories"] as! String))
+                                let detailedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("menudish")
+                                self.navigationController?.pushViewController(detailedViewController!, animated: true)
                             }
                         }
                         
-                        let detailedViewController = self.storyboard?.instantiateViewControllerWithIdentifier("menudish")
-                        self.navigationController?.pushViewController(detailedViewController!, animated: true)
                     } catch {
                         print(error)
                     }

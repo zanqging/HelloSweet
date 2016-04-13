@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CartListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    var dataArray = []
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,77 @@ class CartListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let couponView = CouponView(frame:CGRectMake(0,0,frame.size.width,100))
         self.tableView.tableFooterView = couponView
+        
+        self.loadData()
     }
     
+    
+    func loadData()
+    {
+        let userid = NSUserDefaults.standardUserDefaults().valueForKey("userid")!
+        
+        
+        //Send user data to server side
+        let myURL = NSURL(string:"\(SERVER_URL)getCartList.php");
+        let request = NSMutableURLRequest(URL:myURL!);
+        request.HTTPMethod = "POST"
+        
+        let postString = "userid=\(userid)"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)!;
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response:NSURLResponse?, error:NSError?) -> Void in
+            //                print(request)
+            //                print(data!)
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                if(error != nil)
+                {
+                    //Display an alert message
+                    let myAlert = UIAlertController(title: "Alert", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert);
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:nil)
+                    myAlert.addAction(okAction);
+                    self.presentViewController(myAlert, animated: true, completion: nil)
+                    return
+                }
+                
+                
+                
+                do {
+                    let string : String = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+                    print(string)
+                    
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                    print(json)
+                    if let parseJSON = json {
+                        
+                        let status = parseJSON["status"] as? String
+                        if(status == "200")
+                        {
+                            self.dataArray = parseJSON["data"] as! NSMutableArray
+                            self.tableView.reloadData()
+                            
+                        } else {
+                            // display an alert message
+                            let userMessage = parseJSON["message"] as? String
+                            let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:nil)
+                            myAlert.addAction(okAction);
+                            self.presentViewController(myAlert, animated: true, completion: nil)
+                        }
+                        
+                    }
+                } catch
+                {
+                    print(error)
+                }
+                
+            }
+            
+        }).resume()
+
+    }
+
     /**
      pickUpTimer
      
@@ -51,7 +120,7 @@ class CartListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return self.dataArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -748,7 +748,6 @@
                                             <outlet property="add" destination="dSC-5J-nib" id="ObH-8Q-qJv"/>
                                             <outlet property="myImageView" destination="RIE-OM-Wh9" id="hmB-ao-a3O"/>
                                             <outlet property="title" destination="jdA-n4-4Xp" id="APf-j1-kib"/>
-                                            <segue destination="Sg7-Un-72a" kind="show" id="Sik-uu-edQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

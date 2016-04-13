@@ -76,7 +76,7 @@ class Register: UIViewController {
             
             //let phoneRegEx = "\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$"
             
-            let phoneRegEx = "^^\\d{3}\\d{3}\\d{4}$"
+            let phoneRegEx = "^^\\d{3}\\d{4}\\d{4}$"
             
             let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
             
@@ -124,7 +124,7 @@ class Register: UIViewController {
         
         
         // Send user data to the server side
-        let myURL = NSURL(string: "http://cgi.soic.indiana.edu/~team17/userRegister.php");
+        let myURL = NSURL(string: "\(SERVER_URL)userRegister.php");
         let request = NSMutableURLRequest(URL:myURL!);
         request.HTTPMethod = "POST";
         
@@ -145,6 +145,9 @@ class Register: UIViewController {
                     }
                     
                     do {
+                        let string : String = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+                        print(string)
+                        
                         let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
                         
                         print(json)

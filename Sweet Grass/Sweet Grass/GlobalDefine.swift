@@ -7,4 +7,5 @@
 //
 
 import Foundation
-let SERVER_URL = "http://cgi.soic.indiana.edu/~team17/"
+let SERVER_URL = "http://localhost/Sweetgrass/"
+//let SERVER_URL = "http://cgi.soic.indiana.edu/~team17/"

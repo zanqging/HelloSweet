@@ -20,8 +20,7 @@ class menudetail: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "MenuDetail"
         
         name.text = _detail.dishname
         des.text = _detail.dishinfo

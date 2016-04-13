@@ -28,7 +28,7 @@ class menudish: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "MenuDish"
         // Do any additional setup after loading the view.
     }
     
@@ -41,19 +41,12 @@ class menudish: UIViewController,UITableViewDelegate,UITableViewDataSource{
         menu2.backgroundColor = UIColor.whiteColor()
         let type = arrayOfdishes[indexPath.row]
         menu2.add.tag = indexPath.row
-        menu2.add.addTarget(self, action: "addtocart", forControlEvents:.TouchUpInside)
-//
+        menu2.menuId = indexPath.row
 
         menu2.setCell2(type.dishname,imageName: type.dishimageName)
         return menu2
     }
     
-//    @IBAction func addtocart(sender:UIButton){
-//        let title = arrayOfdishes[sender.tag]
-//        print(title)
-//        
-//        
-//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
      
