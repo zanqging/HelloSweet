@@ -212,14 +212,31 @@ public function getCartList($userid)
     return $returnValue;
 }
 
-public function addCart($userId,$menuId)
+public function addOrder($userId,$menuId,$couponId,$mount,$tax)
 {
-    $sql = "insert into Cart set idMenu=? , idUser=?";
+    $sql = "insert into Order set idMenu=? , idUser=?, idCoupon=?, mount=?, tax=?";
     $statement = $this->conn->prepare($sql);
     
-    $statement->bind_param("ss", $menuId,$userId);
+    $statement->bind_param("ss", $menuId,$userId,$couponId,$mount,$tax);
     $returnValue = $statement->execute();
     
+    return $returnValue;
+}
+
+
+public function getOrderList($userid)
+{
+    $returnValue = array();
+
+    $sql = "select * from Order where idUser = ".$userid;
+    $result = $this->conn->query($sql);
+    if ($result != null &&(mysqli_num_rows($result)>0))
+    {
+        foreach ($result as $key => $value)
+        {
+            $returnValue[$key] = $value;
+        }
+    }
     return $returnValue;
 }
 

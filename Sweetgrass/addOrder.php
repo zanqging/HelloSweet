@@ -3,10 +3,14 @@ require("con.php");
 require("MySQLDao.php");
 
 $userid = htmlentities($_REQUEST["userid"]);
+$menuid = htmlentities($_REQUEST["menuid"]);
+$couponid = htmlentities($_REQUEST["couponid"]);
+$mount = htmlentities($_REQUEST["mount"]);
+$tax = htmlentities($_REQUEST["tax"]);
 
 $returnValue = array();
 
-if(empty($userid))
+if(empty($userid)||empty($menuid))
 {
     $returnValue["status"]="400";
     $returnValue["message"]="Missing required information";
@@ -16,20 +20,20 @@ if(empty($userid))
 
 $dao = new MySQLDAO(conn::$dbhost, conn::$dbuser, conn::$dbpass, conn::$dbname);
 $dao->openConnection();
-$result =$dao->getCartList($userid);
-if(empty($result))
+$result =$dao->addOrder($userid,$menuid,$couponid,$mount,$tax);
+if(!$result)
 {
     $returnValue["status"]="403";
-    $returnValue["message"]="There is no cart list";
+    $returnValue["message"]="add order failed!";
     echo json_encode($returnValue);
-    return;   
+    return;
 }
 
 $returnValue["status"]="200";
-$returnValue["data"] = $result;
 
 echo json_encode($returnValue);
 $dao->closeConnection();
+
 
 ?>
 

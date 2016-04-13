@@ -58,6 +58,10 @@ DROP TABLE IF EXISTS `Order`;
 CREATE TABLE `Order` (
   `idOrder` int(11) NOT NULL AUTO_INCREMENT,
   `idUser` int(11) DEFAULT NULL,
+  `idMenu` int(11) DEFAULT NULL,
+  `idCoupon` int(11) DEFAULT NULL,
+  `mount` float DEFAULT NULL,
+  `tax` float DEFAULT NULL,
   PRIMARY KEY (`idOrder`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -140,4 +144,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-13 23:25:05
+-- Dump completed on 2016-04-13 23:40:10
